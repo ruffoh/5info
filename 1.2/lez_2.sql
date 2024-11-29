@@ -99,10 +99,10 @@ VALUES
 SELECT * FROM citta;
 SELECT * FROM studenti;
 
+ALTER TABLE studenti                                 
+	ADD CittaNascita CHAR(4) NOT NULL;                  //aggiunge colonna 
 ALTER TABLE studenti
-	ADD CittaNascita CHAR(4) NOT NULL;
-ALTER TABLE studenti
-	DROP COLUMN LuogoNascita;
+	DROP COLUMN LuogoNascita;                           // toglie colonna 
 	
 ALTER TABLE studenti
 	RENAME LuogoDiNascita;
