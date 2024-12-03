@@ -35,7 +35,7 @@ VALUES
 ('STNNCL05T13F999N', '20061228', 'Nicola Francesco', 'Stanciu'),
 ('TTTVCN05T13F999N', '20051029', 'Vincenzo', 'Tattoli'),
 ('VNRLNZ05T13F999N', '20060804', 'Lorenzo', 'Veneruzzo');
-
+ 
 
 SELECT Cognome, Nome, CF
 FROM Studenti
@@ -100,9 +100,9 @@ SELECT * FROM citta;
 SELECT * FROM studenti;
 
 ALTER TABLE studenti                                 
-	ADD CittaNascita CHAR(4) NOT NULL;                  //aggiunge colonna 
+	ADD CittaNascita CHAR(4) NOT NULL;                  -- aggiunge colonna 
 ALTER TABLE studenti
-	DROP COLUMN LuogoNascita;                           // toglie colonna 
+	DROP COLUMN LuogoNascita;                           -- toglie colonna 
 	
 ALTER TABLE studenti
 	RENAME LuogoDiNascita;
@@ -110,3 +110,16 @@ ALTER TABLE studenti
 ALTER TABLE studenti CHANGE DataNascita DataDiNascita DATE NOT NULL;
 
 ALTER TABLE studenti RENAME COLUMN LuogoNascita TO LuogoDiNascita;
+
+-- update value 
+UPDATE Studenti 
+SET CittaNascita = 'F770';
+
+SELECT * FROM Citta  WHERE CodiceCatastale = 'F770';   
+
+
+ALTER TABLE Studenti
+ADD CONSTRAINT CittaNascita
+FOREIGN KEY (CittaNascita)
+REFERENCES citta(CodiceCatastale)
+ON DELETE RESTRICT ON UPDATE RESTRICT;
