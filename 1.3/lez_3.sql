@@ -94,7 +94,8 @@ VALUES
 ('E092', 'TV', 'Gorgo al Monticano'),
 ('F999', 'TV', 'Oderzo'),
 ('H823', 'TV', 'San Donà di Piave'),
-('G846', 'TV', 'Ponte di Piave');
+('G846', 'TV', 'Ponte di Piave'),
+('F284', 'BA', 'Molfetta');
 
 SELECT * FROM province;
 SELECT * FROM citta;
@@ -124,7 +125,7 @@ drop column prove;
 alter table studenti
 CHANGE cittaNascita cittaDiNascita char (4);
 
-INSERT INTO STUDENTI (CittaDiNascita) VALUES ('F770');
+INSERT INTO STUDENTI (CittaDiNascita) VALUES ('F999');
 
 ALTER TABLE studenti
 	ADD COLUMN LuogoNascita char(4) NOT NULL;
@@ -132,8 +133,33 @@ ALTER TABLE studenti
 -- DA NON FARE
 -- INSERT INTO studenti (LuogoNascita) VALUES ('G846');
 
-UPDATE studenti SET LuogoNascita = 'G846';
-UPDATE studenti SET LuogoNascita = 'F999';
+
+-- aggiorno la tabella studenti e aggiunge in tutti gli studenti la cittaNascita = valore
+UPDATE studenti SET cittaNascita = 'G846';
+UPDATE studenti SET cittaNascita = 'F999';
+
+
+-- inserisco in città e 2 nuove infomazioni
+INSERT INTO Citta 
+(Codicecatastale,Provincia,Nome)
+VALUES
+('H501','RM','Roma'),
+('G478','PG','Perugia');
+
+
+-- inserisco in Province e 2 nuove infomazioni
+INSERT INTO Province 
+(Codice,Provincia)
+VALUES
+('RM','Roma'),
+('PG','Perugia');
+
+-- AGGIORNA la città di nascita in base al CF 
+
+UPDATE studenti SET cittaNascita = 'G478' WHERE CF = 'GBTTMS05T13F999N';
+
+UPDATE studenti   SET cittaNascita = 'H501' WHERE CF = 'RZVLNA05S28I124C';
+
 
 INSERT INTO Citta
 (CodiceCatastale, Provincia, Nome)
