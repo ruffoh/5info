@@ -39,8 +39,8 @@
 <?php
 	setlocale(LC_TIME, 'ita');
 	$mia_data = strftime("%A, %d %B %Y");
-	echo utf8_encode($mia_data) . "<br>";
-	
+	echo utf8_encode($mia_data)."<br>";
+/*
 	echo "Oggi e' il " . date("d-m-Y") . "<br>";
 	echo "Oggi e' " . htmlspecialchars(date("l")) . "<br>";
 	
@@ -48,9 +48,9 @@
 	echo "A New York sono le " . date("h:i:sa") . "<br>";
 	date_default_timezone_set("Europe/Rome");
 	echo "Da noi sono le " . date("h:i:sa") . "<br>" . "<br>";
-	
+*/
 	$currentFileName = basename($_SERVER['PHP_SELF']);
-	echo "Nome file: " . $currentFileName . "<br>";
+	echo /*"Nome file: " . */"<font color=\"gray\"> $currentFileName ". "</font><br>";
 	/*
 	echo "Indirizzo Server: " . basename($_SERVER['SERVER_ADDR']) . "<br>";
 	echo "Nome Server: " . basename($_SERVER['SERVER_NAME']) . "<br>";
