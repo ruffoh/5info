@@ -16,10 +16,11 @@
 		</p>
 		<div>
 			<?php
-				$nome = "Riccardo";
-				$cognome = "Rossi";
-				$eta = 48;
-				echo "Mi chiamo " . $nome . " " . $cognome . " ed ho " . $eta . " anni.";
+				$nome = "Giacomo";
+				$cognome = "Ruffoni";
+				$eta = 18;
+				// echo "Mi chiamo " . $nome . " " . $cognome . " ed ho " . $eta . " anni.";
+				 echo "Mi chiamo $nome $cognome ed ho $eta anni." ;
 			?>
 		</div>
 		<br><br>
