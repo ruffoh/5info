@@ -19,8 +19,14 @@
 				$nome = "Giacomo";
 				$cognome = "Ruffoni";
 				$eta = 18;
-				// echo "Mi chiamo " . $nome . " " . $cognome . " ed ho " . $eta . " anni.";
-				 echo "Mi chiamo $nome $cognome ed ho $eta anni." ;
+				
+				// concatenzaione
+				echo "Mi chiamo " . $nome . " " . $cognome . " ed ho " . $eta . " anni.";
+				
+				// tutto nell'echo 
+				echo "Mi chiamo $nome $cognome ed ho $eta anni." ;
+
+
 			?>
 		</div>
 		<br><br>
