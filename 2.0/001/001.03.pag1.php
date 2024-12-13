@@ -23,8 +23,11 @@
 				// concatenzaione
 				echo "Mi chiamo " . $nome . " " . $cognome . " ed ho " . $eta . " anni.";
 				
+				echo "<br>";
+				
 				// tutto nell'echo 
 				echo "Mi chiamo $nome $cognome ed ho $eta anni." ;
+		
 
 
 			?>
