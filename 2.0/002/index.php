@@ -18,4 +18,5 @@
 			include("../000/000_NavigationMenu.php")
 		?>
 	</body>
-</html>
+</html
+
