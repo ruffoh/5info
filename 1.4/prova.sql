@@ -84,3 +84,5 @@ WHERE idCliente IN (
 SELECT titolo,idAutore
 from Libri
 WHERE annoPubblicazione > 2000;
+
+drop DATABASE PrepVerifica;
