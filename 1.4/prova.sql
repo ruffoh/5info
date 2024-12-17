@@ -63,3 +63,24 @@ INSERT INTO Prestiti (idLibro, idCliente, dataPrestito, dataRestituzione) VALUES
 (2, 2, '2024-06-20', '2024-07-20'),
 (3, 1, '2024-06-20', '2024-07-20');
 
+// query 
+
+SELECT titolo
+FROM Libri
+WHERE idAutore = (
+    SELECT idAutore 
+    FROM Autori 
+    WHERE nome = 'Giovanni' AND cognome = 'Girotto'
+);
+
+SELECT Nome
+from Clienti
+WHERE idCliente IN (
+    SELECT idCliente
+    from Prestiti
+    
+);
+
+SELECT titolo,idAutore
+from Libri
+WHERE annoPubblicazione > 2000;
