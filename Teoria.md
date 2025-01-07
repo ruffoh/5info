@@ -124,3 +124,17 @@ Esempio corretto (in 3NF):
 
 ## Conclusione
 La normalizzazione è un passaggio cruciale per progettare database efficienti e privi di anomalie. Seguire le forme normali fino alla 3NF garantisce una struttura solida, ma in alcuni casi si può optare per un livello di normalizzazione inferiore per esigenze specifiche di performance o semplificazione.
+
+## Normalizzazione
+
+@Definizione@
+
+---
+
+> Non permette la perdita di dati **lossless** (senza perdita)
+
+
+## Chiave Composta
+ >Una chiave composta è fatta da + **PPK** (_Partial Primary Key_)
+ 
+ 

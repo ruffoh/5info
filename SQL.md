@@ -168,3 +168,16 @@ Gestisci un database chiamato `biblioteca` con due tabelle: `libri` e `autori`. 
    ```
 
 
+# Join 
+
+### Esempio 
+
+  ```sql
+SELECT *
+FROM Modelli AS mod
+LEFT JOIN 
+Marchi AS mar
+ON mod.idMarchio = mar.idMarchio
+WHERE mod.Modello = 'F40';
+   ```
+
