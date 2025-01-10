@@ -180,4 +180,45 @@ Marchi AS mar
 ON mod.idMarchio = mar.idMarchio
 WHERE mod.Modello = 'F40';
    ```
+## Query
 
+```SQL 
+SELECT * 
+FROM modelli 
+WHERE idMarchio =(
+	SELECT idMarchio
+	FROM marchi 
+	WHERE Marchio = 'Lamborghini'	
+)
+
+```
+
+### Left Join 
+```SQL 
+SELECT * 
+FROM modelli 
+LEFT JOIN marchi
+ON modelli.idMarchio = marchi.idMarchio
+WHERE marchi.Marchio = 'Lamborghini'
+ORDER BY Modelli;
+```
+``
+
+### Modelli
+
+| Modello    | idModello | idMarchio |
+| ---------- | --------- | --------- |
+| La Ferrari | 1         |           |
+| ==Miura==  | ==23==    | ==1==     |
+| ==A3==     | ==34==    | ==3==     |
+| ==Ritmo==  | ==65==    | ==2==     |
+| Clio       | 34        |           |
+### Marchi
+
+| idMarchio | Marchio         | **AD**            |
+| --------- | --------------- | ----------------- |
+| ==1==     | ==Lamborghini== | ==Elettra==       |
+| ==2==     | ==Fiat==        | ==Marchione==     |
+| ==3==     | ==Audi==        | ==Franz==         |
+| 5         | Pagani          | Pagani Horatio    |
+| 67        | BMW             | Baus Morales Wolf |
