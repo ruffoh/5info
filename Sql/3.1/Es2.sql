@@ -4,11 +4,11 @@ USE Biblioteca ;
 
 CREATE TABLE Libri (
     Id int  ,
-    primary key(Id);
+    primary key(Id),
     titolo VARCHAR(100) not null,
     autore VARCHAR(50) not null,
     anno_pub YEAR not null,
-    genere VARCHAR(30) not null,
+    genere VARCHAR(30) not null
 );
 
 INSERT INTO Libri (Id,titolo,autore,anno_pub,genere) values (1,'Il Signore degli Anelli','J.R.R. Tolkien',1954,'Fantasy');
