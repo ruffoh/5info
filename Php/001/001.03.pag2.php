@@ -10,8 +10,6 @@
 			<?php
 				echo $_REQUEST['nome'];
 			?><br>
-
-			
 			Cognome = 
 			<?php
 				echo $_REQUEST['cognome'];

@@ -9,12 +9,10 @@
 			<ul>
 				<li><a href="https://www.w3schools.com/" target="_blank">w3schools</a></li>
 				<li><a href="https://www.html.it/" target="_blank">html</a></li>
-				<li> <a href="https://www.google.it" target = "_blank">google</a></li>
-				
 			</ul>
 		</p>
 		<br>
-		<div>		
+		<div>
 			Primo output di PHP:
 			<br><br>
 			<?php

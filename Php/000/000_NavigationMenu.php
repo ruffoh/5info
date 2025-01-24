@@ -2,13 +2,7 @@
 <hr>
 <a href="../" >Clicca qui per tornare alla HOME.</a><br>
 <ul>
-	<!--
-	<li><a href="../000/" target="">Esercizi 000 [Help HTML]</a></li>
-	<li><a href="../001/" target="">Esercizi 001 [Passaggio varibili da pag_1 a pag_2]</a></li>
-	<li><a href="../002/" target="">Esercizi 002 [Numeri e stringhe]</a></li>
-	<li><a href="../003/" target="">Esercizi 003 [File e Directory]</a></li>
-	-->
-	<?php
+		<?php
 		if (is_dir("../000/"))
 		{
 			echo "<li><a href=\"../000/\" target=\"\">Esercizi 000 Esercizi 000 [Help HTML]</a></li>";
@@ -29,28 +23,36 @@
 		{
 			echo "<li><a href=\"../004/\" target=\"\">Esercizi 004 [...]</a></li>";
 		}
+		if (is_dir("../005/"))
+		{
+			echo "<li><a href=\"../005/\" target=\"\">Esercizi 005 [Connesione DB]</a></li>";
+		}
+		if (is_dir("../006/"))
+		{
+			echo "<li><a href=\"../006/\" target=\"\">Esercizi 006 [...]</a></li>";
+		}
+		if (is_dir("../007/"))
+		{
+			echo "<li><a href=\"../007/\" target=\"\">Esercizi 007 [...]</a></li>";
+		}
 	?>
-	<!--
-	<li><a href="../005/" target="">Esercizi 005</a></li>
-	<li><a href="../006/" target="">Esercizi 006</a></li>
-	-->
 </ul>
 <br>
 <?php
 	setlocale(LC_TIME, 'ita');
 	$mia_data = strftime("%A, %d %B %Y");
-	echo utf8_encode($mia_data)."<br>";
-/*
-	echo "Oggi e' il " . date("d-m-Y") . "<br>";
-	echo "Oggi e' " . htmlspecialchars(date("l")) . "<br>";
+	echo utf8_encode($mia_data) . "<br>";
 	
-	date_default_timezone_set("America/New_York");
-	echo "A New York sono le " . date("h:i:sa") . "<br>";
-	date_default_timezone_set("Europe/Rome");
-	echo "Da noi sono le " . date("h:i:sa") . "<br>" . "<br>";
-*/
+	// echo "Oggi e' il " . date("d-m-Y") . "<br>";
+	// echo "Oggi e' " . htmlspecialchars(date("l")) . "<br>";
+	
+	// date_default_timezone_set("America/New_York");
+	// echo "A New York sono le " . date("h:i:sa") . "<br>";
+	// date_default_timezone_set("Europe/Rome");
+	// echo "Da noi sono le " . date("h:i:sa") . "<br>" . "<br>";
+	
 	$currentFileName = basename($_SERVER['PHP_SELF']);
-	echo /*"Nome file: " . */"<font color=\"gray\"> $currentFileName ". "</font><br>";
+	echo "💕 Nome file: $currentFileName <br>";
 	/*
 	echo "Indirizzo Server: " . basename($_SERVER['SERVER_ADDR']) . "<br>";
 	echo "Nome Server: " . basename($_SERVER['SERVER_NAME']) . "<br>";
@@ -63,5 +65,5 @@
 	echo "HTTP_HOST: " . basename($_SERVER['HTTP_HOST']) . "<br>";
 	*/
 	echo "<br><br>";
-	echo "<font color=\"gray\">© Ruffoh-" . date("Y") . "</font>";
+	echo "<font color=\"gray\">© Ricky.Reds 2023-" . date("Y") . "</font>";
 ?>

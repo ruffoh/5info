@@ -16,20 +16,10 @@
 		</p>
 		<div>
 			<?php
-				$nome = "Giacomo";
-				$cognome = "Ruffoni";
-				$eta = 18;
-				
-				// concatenzaione
+				$nome = "Riccardo";
+				$cognome = "Rossi";
+				$eta = 48;
 				echo "Mi chiamo " . $nome . " " . $cognome . " ed ho " . $eta . " anni.";
-				
-				echo "<br>";
-				
-				// tutto nell'echo 
-				echo "Mi chiamo $nome $cognome ed ho $eta anni." ;
-		
-
-
 			?>
 		</div>
 		<br><br>

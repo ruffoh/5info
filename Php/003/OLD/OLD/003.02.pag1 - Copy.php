@@ -19,7 +19,8 @@
 			<h2>Elenca i files presenti nella cartella corrente (<?PHP echo basename(__DIR__) ?>).</h2>
 			<?PHP
 				foreach (new DirectoryIterator('.') as $file) {
-					#if($file->isDot()) continue;
+					if($file->isDot()) continue;
+					//echo $file->getFilename() . "<br>";
 					echo $file->getFilename();
 					if ($file->getFilename() == basename($_SERVER['PHP_SELF']))
 						echo "<font color=\"red\"> - SONO IO -</font>";

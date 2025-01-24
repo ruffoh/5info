@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html>
 	<head>
-		<title>Esercizi 002 - index</title>
+		<title>Esercizi 005 - index</title>
 	</head>
 	<body>
 		<p>			
@@ -11,7 +11,7 @@
 		</p>
 		<br>
 			<ul>
-				<li><a href="002.01.pag0-NumeroCasuale.php" >Numero casuale.</a></li>
+				<li><a href="005.01.pag0-LetturaDB.php" >Lettura Database</a></li>
 				<li><a href="" >...</a></li>
 			</ul>
 		<?PHP
