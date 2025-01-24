@@ -9,19 +9,20 @@
 		</p>
 		<?PHP
 			// apertura conessione
-			$connection = mysqli_connect('localhost', 'root', '', '5_auto')
+			$connection = mysqli_connect('localhost', 'root', '', 'auto')
 			or die ("ERROR: Cannot connect");
 			
 			// crea ed esegue una query di INSERT
 			
 			// crea ed esegue una query diSELECT
-			$sql = "SELECT * FROM marchi";
+			$sql = " SELECT * FROM marchi";
 			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 			
 			//verifica le righe restituite
 			if (mysqli_num_rows($result) > 0) {
 				while ($row = mysqli_fetch_row($result)) {
-					echo $row[0] . " = " . $row[1] . "\n";
+					echo $row[0] . " | " . $row[1]. " | " . $row[2] . " | " . $row[3]. " | "."<BR>";
+					
 				}
 			} else {
 				echo "No records found!";
