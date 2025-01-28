@@ -20,14 +20,23 @@
 			if (mysqli_num_rows($result) > 0) {
 				// crea la tabella
 				echo "<table border='1'>";
-				echo "<tr><th>ID</th><th>Nome</th><th>Descrizione</th><th>Altra Colonna</th></tr>";
 				
+				// Ottieni i nomi delle colonne
+				$fields = mysqli_fetch_fields($result);
+				
+				// Crea l'intestazione della tabella con i nomi delle colonne
+				echo "<tr>";
+				foreach ($fields as $field) {
+					echo "<th>" . $field->name . "</th>";
+				}
+				echo "</tr>";
+				
+				// Cicla attraverso i dati
 				while ($row = mysqli_fetch_row($result)) {
 					echo "<tr>";
-					echo "<td>" . $row[0] . "</td>";
-					echo "<td>" . $row[1] . "</td>";
-					echo "<td>" . $row[2] . "</td>";
-					echo "<td>" . $row[3] . "</td>";
+					foreach ($row as $data) {
+						echo "<td>" . $data . "</td>";
+					}
 					echo "</tr>";
 				}
 				
