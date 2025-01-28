@@ -63,7 +63,21 @@
 	echo "Remote Port: " . basename($_SERVER['REMOTE_PORT']) . "<br>";
 	echo "Script URI: " . basename($_SERVER['REQUEST_URI']) . "<br>";
 	echo "HTTP_HOST: " . basename($_SERVER['HTTP_HOST']) . "<br>";
+	
 	*/
 	echo "<br><br>";
 	echo "<font color=\"gray\">© Ruffoh 2024-" . date("Y") . "</font>";
+?>
+
+<?php
+    $connection = mysqli_connect('localhost', 'root', '', 'auto')
+    or die ("ERROR: Cannot connect");
+    
+    $filecorrente=basename($_SERVER['PHP_SELF']);
+
+    $sql = "insert into log (descrizione,utente,nomePagina) values ('Accesso pagina web','NADALON Marco','$filecorrente')";
+    $result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+
+    mysqli_close($connection);
+
 ?>
