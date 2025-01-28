@@ -13,7 +13,7 @@
 			or die ("ERROR: Cannot connect");
 
 			// crea ed esegue una query di SELECT
-			$sql = "SELECT * FROM marchi";
+			$sql = "SELECT * FROM automobili";
 			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 
 			// verifica se ci sono righe restituite

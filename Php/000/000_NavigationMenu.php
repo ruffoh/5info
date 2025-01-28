@@ -52,7 +52,7 @@
 	// echo "Da noi sono le " . date("h:i:sa") . "<br>" . "<br>";
 	
 	$currentFileName = basename($_SERVER['PHP_SELF']);
-	echo "💕 Nome file: $currentFileName <br>";
+	echo "💀 Nome file: $currentFileName <br>";
 	/*
 	echo "Indirizzo Server: " . basename($_SERVER['SERVER_ADDR']) . "<br>";
 	echo "Nome Server: " . basename($_SERVER['SERVER_NAME']) . "<br>";
@@ -65,5 +65,5 @@
 	echo "HTTP_HOST: " . basename($_SERVER['HTTP_HOST']) . "<br>";
 	*/
 	echo "<br><br>";
-	echo "<font color=\"gray\">© Ricky.Reds 2023-" . date("Y") . "</font>";
+	echo "<font color=\"gray\">© Ruffoh 2024-" . date("Y") . "</font>";
 ?>
