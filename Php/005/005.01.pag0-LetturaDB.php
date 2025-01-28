@@ -16,7 +16,7 @@
 			$sql = "SELECT * FROM marchi";
 			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 
-			// verifica le righe restituite
+			// verifica se ci sono righe restituite
 			if (mysqli_num_rows($result) > 0) {
 				// crea la tabella
 				echo "<table border='1'>";
@@ -34,7 +34,8 @@
 				// chiudi la tabella
 				echo "</table>";
 			} else {
-				echo "No records found!";
+				// Se non ci sono risultati, non viene stampata la tabella
+				echo "Nessun record trovato!";
 			}
 
 			// chiude la connessione
