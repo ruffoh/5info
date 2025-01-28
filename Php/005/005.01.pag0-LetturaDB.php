@@ -8,26 +8,35 @@
 			Lettura dati da Database.
 		</p>
 		<?PHP
-			// apertura conessione
+			// apertura connessione
 			$connection = mysqli_connect('localhost', 'root', '', 'auto')
 			or die ("ERROR: Cannot connect");
-			
-			// crea ed esegue una query di INSERT
-			
-			// crea ed esegue una query diSELECT
-			$sql = " SELECT * FROM marchi";
+
+			// crea ed esegue una query di SELECT
+			$sql = "SELECT * FROM marchi";
 			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
-			
-			//verifica le righe restituite
+
+			// verifica le righe restituite
 			if (mysqli_num_rows($result) > 0) {
+				// crea la tabella
+				echo "<table border='1'>";
+				echo "<tr><th>ID</th><th>Nome</th><th>Descrizione</th><th>Altra Colonna</th></tr>";
+				
 				while ($row = mysqli_fetch_row($result)) {
-					echo $row[0] . " | " . $row[1]. " | " . $row[2] . " | " . $row[3]. " | "."<BR>";
-					
+					echo "<tr>";
+					echo "<td>" . $row[0] . "</td>";
+					echo "<td>" . $row[1] . "</td>";
+					echo "<td>" . $row[2] . "</td>";
+					echo "<td>" . $row[3] . "</td>";
+					echo "</tr>";
 				}
+				
+				// chiudi la tabella
+				echo "</table>";
 			} else {
 				echo "No records found!";
 			}
-			
+
 			// chiude la connessione
 			mysqli_close($connection);
 		?>
