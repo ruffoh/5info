@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 31, 2025 alle 09:56
+-- Creato il: Gen 31, 2025 alle 11:27
 -- Versione del server: 10.4.25-MariaDB
 -- Versione PHP: 8.1.10
 
@@ -45,6 +45,33 @@ INSERT INTO `automobili` (`NumeroTelaio`, `idModello`, `Colore`, `Targa`) VALUES
 (56, 45, 'Blu', 'D984NL'),
 (89, 13, 'Arancione', 'O87N21'),
 (101, 37, 'Nero', 'A32CNO');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `log`
+--
+
+CREATE TABLE `log` (
+  `Id` int(11) NOT NULL,
+  `Data` datetime NOT NULL,
+  `Utente` varchar(50) NOT NULL,
+  `NomePagina` varchar(255) NOT NULL,
+  `Descrizione` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `log`
+--
+
+INSERT INTO `log` (`Id`, `Data`, `Utente`, `NomePagina`, `Descrizione`) VALUES
+(1, '2025-01-31 11:12:37', 'Ruffoni Giacomo', '005.01.pag0-LetturaDB.php', 'Accesso pagina web'),
+(2, '2025-01-31 11:12:39', 'Ruffoni Giacomo', '005.01.pag0-LetturaDB.php', 'Accesso pagina web'),
+(3, '2025-01-31 11:12:39', 'Ruffoni Giacomo', '005.01.pag0-LetturaDB.php', 'Accesso pagina web'),
+(4, '2025-01-31 11:12:39', 'Ruffoni Giacomo', '005.01.pag0-LetturaDB.php', 'Accesso pagina web'),
+(5, '2025-01-31 11:25:43', 'Ruffoni Giacomo', '005.01.pag0-LetturaDB.php', 'Accesso pagina web'),
+(6, '2025-01-31 11:25:43', 'Ruffoni Giacomo', '005.01.pag0-LetturaDB.php', 'Accesso pagina web'),
+(7, '2025-01-31 11:25:43', 'Ruffoni Giacomo', '005.01.pag0-LetturaDB.php', 'Accesso pagina web');
 
 -- --------------------------------------------------------
 
@@ -148,6 +175,12 @@ ALTER TABLE `automobili`
   ADD KEY `fk_AutomobileModello` (`idModello`);
 
 --
+-- Indici per le tabelle `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indici per le tabelle `marchi`
 --
 ALTER TABLE `marchi`
@@ -172,6 +205,16 @@ ALTER TABLE `ruoli`
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`utente`),
   ADD KEY `fk_utenti_ruoli` (`idRuolo`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `log`
+--
+ALTER TABLE `log`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Limiti per le tabelle scaricate
