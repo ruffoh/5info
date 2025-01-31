@@ -1,30 +1,13 @@
 
-Conversazione aperta. 2 messaggi. 1 messaggio non letto.
-
-Vai ai contenuti
-Utilizzo di Posta di Antonio Scarpa con gli screen reader
-
-1 di 997
-zipo
-Posta in arrivo
-
-Giacomo RUFFONI
-Allegati09:07 (1 ora fa)
--- Giacomo Ruffoni 5AIT
-
-Marco NADALON
-Allegati
-10:54 (0 minuti fa)
-a me
-
-DA SCRIVERE DENTRO NAVIGATION:
 <?php
-    $connection = mysqli_connect('localhost', 'root', '', 'autoRuf')
+    $connection = mysqli_connect('localhost', 'root', '', '5ait_automobili')
     or die ("ERROR: Cannot connect");
     
     $filecorrente=basename($_SERVER['PHP_SELF']);
 
-    $sql = "insert into log (descrizione,utente,nomePagina) values ('Accesso pagina web','Ruffoni Giacomo','$filecorrente')";
+	$my_date = date("Y-m-d H:i:s");
+
+    $sql = "insert into log (Data,descrizione,utente,nomePagina) values ('$my_date','Accesso pagina web','Ruffoni Giacomo','$filecorrente')";
     $result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 
     mysqli_close($connection);
@@ -32,14 +15,6 @@ DA SCRIVERE DENTRO NAVIGATION:
 ?>
 
 
-Il giorno mar 28 gen 2025 alle ore 09:07 Giacomo RUFFONI <giacomo.ruffoni@antonioscarpa.edu.it> ha scritto:
-
-
---
-Giacomo Ruffoni 
-5AIT
- Un allegato
-  •  Scansione eseguita da Gmail
 <!doctype HTML>
 <html>
 	<head>
@@ -51,16 +26,31 @@ Giacomo Ruffoni
 		</p>
 		<?PHP
 			// apertura conessione
-			$connection = mysqli_connect('localhost', 'root', '', 'autoRuf')
+			$connection = mysqli_connect('localhost', 'root', '', '5ait_automobili')
 			or die ("ERROR: Cannot connect");
 			
 			// crea ed esegue una query di INSERT
-			$sql = "insert into log (descrizione,utente,nomePagina) values ('Accesso pagina web','Ruffoni Giacomo','005.01.pag0-LetturaDB')";
-			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+			$my_date = date("Y-m-d H:i:s");
+
+  	 		 $sql = "insert into log (Data,descrizione,utente,nomePagina) values ('$my_date','Accesso pagina web','Ruffoni Giacomo','$filecorrente')";
+   			 $result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 			
 			// crea ed esegue una query diSELECT
 			$sql = "select * from log	";
 			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+
+			/* roba del prof
+
+			$sql = " SELECT DATA, NomePagina,ID";
+			$sql = $sql."FROM log";
+			$sql = $sql." WHERE idMArchio = 4";
+			$sql = $sql." ORDER BY ID DESC";
+			$sql = $sql." LIMIT 5";
+			
+			$result = mysqli_query($connection,$sql) 
+			or die ("ERROR: ". mysqli_error($connection)."(query was $sql)");
+			*/
+
 			
 			//verifica le righe restituite
 			if (mysqli_num_rows($result) > 0) {
