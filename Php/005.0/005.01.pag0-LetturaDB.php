@@ -19,12 +19,12 @@ a me
 
 DA SCRIVERE DENTRO NAVIGATION:
 <?php
-    $connection = mysqli_connect('localhost', 'root', '', 'auto')
+    $connection = mysqli_connect('localhost', 'root', '', 'autoRuf')
     or die ("ERROR: Cannot connect");
     
     $filecorrente=basename($_SERVER['PHP_SELF']);
 
-    $sql = "insert into log (descrizione,utente,nomePagina) values ('Accesso pagina web','NADALON Marco','$filecorrente')";
+    $sql = "insert into log (descrizione,utente,nomePagina) values ('Accesso pagina web','Ruffoni Giacomo','$filecorrente')";
     $result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 
     mysqli_close($connection);
@@ -51,11 +51,11 @@ Giacomo Ruffoni
 		</p>
 		<?PHP
 			// apertura conessione
-			$connection = mysqli_connect('localhost', 'root', '', 'auto')
+			$connection = mysqli_connect('localhost', 'root', '', 'autoRuf')
 			or die ("ERROR: Cannot connect");
 			
 			// crea ed esegue una query di INSERT
-			$sql = "insert into log (descrizione,utente,nomePagina) values ('Accesso pagina web','NADALON Marco','005.01.pag0-LetturaDB')";
+			$sql = "insert into log (descrizione,utente,nomePagina) values ('Accesso pagina web','Ruffoni Giacomo','005.01.pag0-LetturaDB')";
 			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 			
 			// crea ed esegue una query diSELECT
