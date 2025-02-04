@@ -27,14 +27,13 @@
 
 			
 			//verifica le righe restituite
-			$TRUNCATE = "TRUNCATE TABLE log ;";
+            
+            $TRUNCATE = "TRUNCATE TABLE log ;";
 			$contatore = 0;
 			if (mysqli_num_rows($result) > 0) {
 				$numColumns = mysqli_num_fields($result);
 				while ($row = mysqli_fetch_row($result)) {
 					if (count($row) == $numColumns) {
-						echo implode(" - ", $row);
-						echo "<br>";
 						$contatore ++;
 						if($contatore > 5){
 							mysqli_query($connection,$TRUNCATE);
