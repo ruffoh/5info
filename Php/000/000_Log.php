@@ -6,7 +6,8 @@
 			// crea ed esegue una query di INSERT
 			$my_date = date("Y-m-d H:i:s");
 			$filecorrente = basename($_SERVER['PHP_SELF']);
-  	 		 $sql = "insert into log (Data,descrizione,utente,nomePagina) values ('$my_date','Accesso pagina web','Ruffoni Giacomo','$filecorrente')";
+            $nomeUtente = get_current_user();
+  	 		 $sql = "insert into log (Data,descrizione,utente,nomePagina) values ('$my_date','Accesso pagina web','$nomeUtente','$filecorrente')";
    			 $result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 			
 			// crea ed esegue una query diSELECT
