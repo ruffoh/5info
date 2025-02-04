@@ -1,5 +1,9 @@
 <br><br><br><br>
 <hr>
+<?php
+include("../000/000_Log.php");
+
+?>
 <a href="../" >Clicca qui per tornare alla HOME.</a><br>
 <ul>
 		<?php
@@ -39,6 +43,7 @@
 </ul>
 <br>
 <?php
+
 	setlocale(LC_TIME, 'ita');
 	$mia_data = strftime("%A, %d %B %Y");
 	echo utf8_encode($mia_data) . "<br>";
@@ -67,19 +72,6 @@
 	*/
 	echo "<br><br>";
 	echo "<font color=\"gray\">© Ruffoh 2024-" . date("Y") . "</font>";
-?>
-
-<?php
-    $connection = mysqli_connect('localhost', 'root', '', '5ait_automobili')
-    or die ("ERROR: Cannot connect");
-    
-    $filecorrente = basename($_SERVER['PHP_SELF']);
-	
-	$my_date = date("Y-m-d H:i:s");
-
-    $sql = "insert into log (Data,descrizione,utente,nomePagina) values ('$my_date','Accesso pagina web','Ruffoni Giacomo','$filecorrente')";
-    $result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
-
-    mysqli_close($connection);
 
 ?>
+
