@@ -36,7 +36,7 @@
 				while ($row = mysqli_fetch_row($result)) {
 					if (count($row) == $numColumns) {
 						$contatore ++;
-						if($contatore > 5){
+						if($contatore > 20){
 							mysqli_query($connection,$TRUNCATE);
 						}
 					} else {

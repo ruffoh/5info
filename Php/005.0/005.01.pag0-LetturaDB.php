@@ -1,3 +1,4 @@
+
 <!doctype HTML>
 <html>
 	<head>
@@ -7,30 +8,32 @@
 		<p>
 			Lettura dati da Database.
 		</p>
+
 		<?PHP
 			// apertura connessione
 			$connection = mysqli_connect('localhost', 'root', '', '5ait_automobili')
 			or die ("ERROR: Cannot connect");
 
-			$sql = "SELECT * FROM log";
+			// crea ed esegue una query di SELECT
+			$sql = "SELECT * FROM automobili";
 			$result = mysqli_query($connection, $sql) or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 
-			// verifica se ci sono righe 
+			// verifica se ci sono righe restituite
 			if (mysqli_num_rows($result) > 0) {
-				// crea tabella
+				// crea la tabella
 				echo "<table border='1'>";
 				
-				// prende nomi colonne
+				// Ottieni i nomi delle colonne
 				$fields = mysqli_fetch_fields($result);
 				
-				// nomi delle colonne
+				// Crea l'intestazione della tabella con i nomi delle colonne
 				echo "<tr>";
 				foreach ($fields as $field) {
 					echo "<th>" . $field->name . "</th>";
 				}
 				echo "</tr>";
 				
-				// Cicla dati nella tabella
+				// Cicla attraverso i dati
 				while ($row = mysqli_fetch_row($result)) {
 					echo "<tr>";
 					foreach ($row as $data) {
@@ -38,19 +41,15 @@
 					}
 					echo "</tr>";
 				}
+				
+				// chiudi la tabella
 				echo "</table>";
+			} else {
+				// Se non ci sono risultati, non viene stampata la tabella
+				echo "Nessun record trovato!";
 			}
-			
-			// Riposiziona il puntatore all'inizio per la seconda stampa
-			mysqli_data_seek($result, 0);
 
-			// Stampa i dati senza tabella
-			if (mysqli_num_rows($result) > 0) {
-				while ($row = mysqli_fetch_row($result)) {
-					echo implode(" - ", $row) . "<br>";
-				}
-			}
-			
+			// chiude la connessione
 			mysqli_close($connection);
 		?>
 		<br>
