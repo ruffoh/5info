@@ -28,13 +28,13 @@
 		$inputUtente = ($_POST["utente"]);
 		$inputPass = ($_POST["password"]);
 		
-		$pwd = password_hash('$inputPass', PASSWORD_DEFAULT);
+		$pwd = sha1('$inputPass');
 		
 		echo $pwd . "<BR>";
 		
-		$connection = mysqli_connect('localhost', 'root', '', 'vacanze')
+		$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
 			or die ("ERROR: Cannot connect");
-		$sql = "SELECT ID FROM utenti WHERE user = '$inputUtente' AND password = '$inputPass'";
+		$sql = "SELECT ID FROM utenti WHERE user = '$inputUtente' AND password = '$pwd'";
 		
 		$result = mysqli_query($connection, $sql)
 		or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
