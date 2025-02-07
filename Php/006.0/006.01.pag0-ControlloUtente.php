@@ -12,7 +12,7 @@
 		</p>
 		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 			Utente: <input type="text" name="utente"><br>
-			Password: <input type="text" name="password"><br>
+			Password: <input type="text"   name="password"> <br>
 			<input type="submit" name ="InvioCredenziali" value="invia POST" />
 		</form>
 	</body>
@@ -34,13 +34,13 @@
 		
 		$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
 			or die ("ERROR: Cannot connect");
-		$sql = "SELECT ID FROM utenti WHERE user = '$inputUtente' AND password = '$pwd'";
+		$sql = "INSERT INTO `utenti` (`ID`, `user`, `password`) VALUES (NULL, $inputUtente','$pwd');";
 		
 		$result = mysqli_query($connection, $sql)
-		or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+		or die ("ERROR:generico ");
 		
 		if (mysqli_num_rows($result) > 0) {
-			header("Location: 006.01.pag1-UtenteVerificato.php");
+		echo("utente creato");
 		}
 		mysqli_close($connection);
 	}
