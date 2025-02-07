@@ -28,7 +28,7 @@
 		$inputUtente = ($_POST["utente"]);
 		$inputPass = ($_POST["password"]);
 		
-		$pwd = sha1('$inputPass');
+		$pwd = sha1($inputPass); // SENZA APICI
 		
 		echo $pwd . "<BR>";
 		
