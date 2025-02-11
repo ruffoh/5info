@@ -27,13 +27,18 @@ include("../000/000_Log.php");
 		{
 			echo "<li><a href=\"../004/\" target=\"\">Esercizi 004 [...]</a></li>";
 		}
-		if (is_dir("../005/"))
+		if (is_dir("../005.0/"))
 		{
-			echo "<li><a href=\"../005/\" target=\"\">Esercizi 005 [Connesione DB]</a></li>";
+			echo "<li>
+			<a href=\"../005.0/\" target=\"\">Esercizi 005 [PROF Connesione DB]</a></li>";
+		}
+		if (is_dir("../005.1/"))
+		{
+			echo "<li><a href=\"../005.1/\" target=\"\">Esercizi 005 [Ruffoni DB]</a></li>";
 		}
 		if (is_dir("../006/"))
 		{
-			echo "<li><a href=\"../006/\" target=\"\">Esercizi 006 [...]</a></li>";
+			echo "<li><a href=\"../006/\" target=\"\">Esercizi 006 [Menager Utenti]</a></li>";
 		}
 		if (is_dir("../007/"))
 		{

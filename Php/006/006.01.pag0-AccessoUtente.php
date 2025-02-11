@@ -4,15 +4,15 @@
 <!doctype HTML>
 <html>
 	<head>
-		<title>Esercizi 006 - Verifica Utente</title>
+		<title>Esercizi 006 - Accesso Utente</title>
 	</head>
 	<body>
 		<p>
-			Verifica utente
+			Accesso utente
 		</p>
 		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 			Utente: <input type="text" name="utente"><br>
-			Password: <input type="password"   name="password"> <br>
+			Password: <input type="password" name="password"><br>
 			<input type="submit" name ="InvioCredenziali" value="invia POST" />
 		</form>
 	</body>
@@ -28,20 +28,21 @@
 		$inputUtente = ($_POST["utente"]);
 		$inputPass = ($_POST["password"]);
 		
-		$pwd = sha1($inputPass); // SENZA APICI
-		
-		echo $pwd . "<BR>";
-		
+		$pwd = sha1('$inputPass');
+				
 		$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
 			or die ("ERROR: Cannot connect");
-		$sql = "INSERT INTO `utenti` (`ID`, `user`, `password`) VALUES (NULL, $inputUtente','$pwd');";
+		$sql = "SELECT ID FROM utenti WHERE user = '$inputUtente' ";
 		
 		$result = mysqli_query($connection, $sql)
-		or die ("ERROR:generico ");
+		or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 		
 		if (mysqli_num_rows($result) > 0) {
-		echo("utente creato");
+			
+			header("Location: 006.01.pag1-UtenteVerificato.php");
 		}
+		else echo("<h1>Grande errore</h1>");
+		
 		mysqli_close($connection);
 	}
 ?>
