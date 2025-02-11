@@ -12,7 +12,7 @@
 		</p>
 		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 			Utente: <input type="text" name="utente"><br>
-			Password: <input type="text"   name="password"> <br>
+			Password: <input type="password"   name="password"> <br>
 			<input type="submit" name ="InvioCredenziali" value="invia POST" />
 		</form>
 	</body>
