@@ -42,7 +42,11 @@ include("../000/000_Log.php");
 		}
 		if (is_dir("../007/"))
 		{
-			echo "<li><a href=\"../007/\" target=\"\">Esercizi 007 [...]</a></li>";
+			echo "<li><a href=\"../007/\" target=\"\">Esercizi 007 [Eliminazione Utenti]</a></li>";
+		}
+		if (is_dir("../008/"))
+		{
+			echo "<li><a href=\"../008/\" target=\"\">Esercizi 008 [Prenotazione]</a></li>";
 		}
 	?>
 </ul>

@@ -1,67 +1,45 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = '5ait_vacanze';
+// HTML code for select element
+echo '<select name="bioma_id">';
+// Loop through each row and create an option element for each bioma
+while ($row = $result->fetch_assoc()) {
+    echo '<option value="' . $row["bioma_id"] . '">' . $row["bioma_name"] . '</option>';
+}
+echo '</select>';
+// Database connection parameters
+$servername = "localhost";
+$username = "your_username";
+$password = "your_password";
+$dbname = "your_database_name";
 
-// Connessione al database
-$connection = mysqli_connect($host, $user, $password, $dbname);
-if (!$connection) {
-    die("ERROR: Cannot connect to database.");
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// Se il form è stato inviato
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!isset($_POST["user_id"]) || trim($_POST["user_id"]) == "") {
-        die("Devi selezionare un utente!");
+// SQL query to select data from the "biomi" table
+$sql = "SELECT * FROM biomi";
+
+// Execute the query
+$result = $conn->query($sql);
+
+// Check if any rows were returned
+if ($result->num_rows > 0) {
+    // Loop through each row and display the data
+    while ($row = $result->fetch_assoc()) {
+        echo "Bioma ID: " . $row["bioma_id"] . "<br>";
+        echo "Bioma Name: " . $row["bioma_name"] . "<br>";
+        echo "Bioma Description: " . $row["bioma_description"] . "<br>";
+        echo "<br>";
     }
-
-    $userId = intval($_POST["user_id"]); // Assicuriamoci che sia un numero intero
-
-    // Query sicura con prepared statement
-    $stmt = mysqli_prepare($connection, "DELETE FROM utenti WHERE id = ?");
-    mysqli_stmt_bind_param($stmt, "i", $userId);
-    mysqli_stmt_execute($stmt);
-
-    if (mysqli_stmt_affected_rows($stmt) > 0) {
-        echo "Utente eliminato con successo!";
-    } else {
-        echo "Nessun utente trovato con l'ID specificato.";
-    }
-
-    mysqli_stmt_close($stmt);
+} else {
+    echo "No data found in the 'biomi' table.";
 }
 
-// Recupero utenti per il dropdown
-$sql = "SELECT id, user FROM utenti";
-$result = mysqli_query($connection, $sql);
-?>
-2
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminazione Utente</title>
-</head>
-<body>
-    <h2>Eliminazione utente</h2>
-    <form method="POST" action="">
-        <label for="utente">Utente:</label>
-        <select id="utente" name="user_id">
-            <option value="">Seleziona un utente</option>
-            <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<option value='" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["user"]) . "</option>";
-            }
-            ?>
-        </select>
-        <br>
-        <input type="submit" value="Elimina">
-    </form>
-</body>
-</html>
+// Close the connection
+$conn->close();
 
-<?php
-mysqli_close($connection);
 ?>
