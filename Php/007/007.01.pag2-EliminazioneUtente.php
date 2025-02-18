@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $sql = "SELECT id, user FROM utenti";
 $result = mysqli_query($connection, $sql);
 ?>
-
+2
 <!DOCTYPE html>
 <html lang="it">
 <head>

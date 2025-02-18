@@ -7,6 +7,9 @@
 		<p>
 			Sei dentro
 		</p>
+		<p>
+			<a href="007.01.pag2-EliminazioneUtente.php">Eliminazione </a>
+		<p>
 	</body>
 </html>
 

@@ -4,7 +4,7 @@
 <!doctype HTML>
 <html>
 	<head>
-		<title>Esercizi 006 - Accesso Utente</title>
+		<title>Esercizi 007 - Accesso Utente</title>
 	</head>
 	<body>
 		<p>
@@ -39,7 +39,7 @@
 		
 		if (mysqli_num_rows($result) > 0) {
 			
-			header("Location: 006.01.pag1-UtenteVerificato.php");
+			header("Location: 007.01.pag1-UtenteVerificato.php");
 		}
 		else echo("<h1>Grande errore</h1>");
 		
