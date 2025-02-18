@@ -1,68 +1,67 @@
 <?php
-if (!isset($_POST["user_id"]) || trim($_POST["user_id"]) == "") {
-	die("Devi inserire un ID utente!");
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = '5ait_vacanze';
+
+// Connessione al database
+$connection = mysqli_connect($host, $user, $password, $dbname);
+if (!$connection) {
+    die("ERROR: Cannot connect to database.");
 }
 
-$userId = $_POST["user_id"];
-$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
-	or die("ERROR: Cannot connect");
+// Se il form è stato inviato
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!isset($_POST["user_id"]) || trim($_POST["user_id"]) == "") {
+        die("Devi selezionare un utente!");
+    }
 
-$sql = "DELETE FROM utenti WHERE id = $userId";
-$result = mysqli_query($connection, $sql)
-	or die("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+    $userId = intval($_POST["user_id"]); // Assicuriamoci che sia un numero intero
 
-if (mysqli_affected_rows($connection) > 0) {
-	echo "Utente eliminato con successo!";
-} else {
-	echo "Nessun utente trovato con l'ID specificato.";
+    // Query sicura con prepared statement
+    $stmt = mysqli_prepare($connection, "DELETE FROM utenti WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "Utente eliminato con successo!";
+    } else {
+        echo "Nessun utente trovato con l'ID specificato.";
+    }
+
+    mysqli_stmt_close($stmt);
 }
 
-mysqli_close($connection);
+// Recupero utenti per il dropdown
+$sql = "SELECT id, user FROM utenti";
+$result = mysqli_query($connection, $sql);
 ?>
 
 <!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminazione Utente</title>
+</head>
 <body>
-	<p><h2>Eliminazione utente</h2></p>	
-	<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
-		<label for="utente"> Utente : </label>
-		<select id="utente" name="utente" onchange="document.getElementById('selected_text').value=this.options[this.selectedIndex].text">
-			<option value="0">Selezione utente</option>
-			<?php
-			$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
-				or die("ERROR: Cannot connect");
-			$sql = "SELECT ID, user FROM utenti";
+    <h2>Eliminazione utente</h2>
+    <form method="POST" action="">
+        <label for="utente">Utente:</label>
+        <select id="utente" name="user_id">
+            <option value="">Seleziona un utente</option>
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["user"]) . "</option>";
+            }
+            ?>
+        </select>
+        <br>
+        <input type="submit" value="Elimina">
+    </form>
+</body>
+</html>
 
-			$result = mysqli_query($connection, $sql)
-				or die("ERROR: " . mysqli_error($connection) . " (query was $sql)");
-
-			if (mysqli_num_rows($result) > 0) {
-				while ($row = mysqli_fetch_row($result)) {
-					echo "<option value=" . $row[0] . ">" . $row[1] . "</option>";
-				}
-			}
-			mysqli_close($connection);
-			?>
-		</select><br>
-		<input type="hidden" name="selected_text" id="selected_text" value="" />
-		<input type="submit" name="InvioCredenziali" value="Elimina"/>
 <?php
-} else {
-	if (!isset($_POST["selected_text"]) || trim($_POST["selected_text"]) == "") {
-		die("Devi selezionare un utente!");
-	}
-	$nomeUtente = $_POST["selected_text"];
-	echo "Nome: " . $nomeUtente;
-	$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
-		or die("ERROR: Cannot connect");
-	$sql = "SELECT `id`, `user` FROM `utenti`";
-	$result = mysqli_query($connection, $sql)
-		or die("ERROR: " . mysqli_error($connection) . " (query was $sql)");
-
-	if (mysqli_num_rows($result) > 0) {
-		while ($row = mysqli_fetch_row($result)) {
-			echo "<option value=" . $row[0] . ">" . $row[1] . "</option>";
-		}
-	}
-	mysqli_close($connection);
-}
+mysqli_close($connection);
 ?>
