@@ -4,12 +4,12 @@
 <!doctype HTML>
 <html>
 	<head>
-		<title>Esercizi 007 - Accesso Utente</title>
+		<title>Esercizi 006 - Creazione Utente</title>
 	</head>
 	<body>
-		<p>
-			Accesso utente
-		</p>
+		<h2>
+			Creazione utente
+		</h2>
 		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 			Utente: <input type="text" name="utente"><br>
 			Password: <input type="password" name="password"><br>
@@ -28,21 +28,23 @@
 		$inputUtente = ($_POST["utente"]);
 		$inputPass = ($_POST["password"]);
 		
-		$pwd = sha1('$inputPass');
-				
-		$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
+		$pwd = MD5($inputPass);
+		
+		$connection = mysqli_connect('localhost', 'root', '', 'vacanze')
 			or die ("ERROR: Cannot connect");
-		$sql = "SELECT ID_utente FROM utenti WHERE utente = '$inputUtente' ";
+		$sql = "SELECT ID_utente FROM utenti WHERE utente = '$inputUtente'";
 		
 		$result = mysqli_query($connection, $sql)
-		or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+			or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
 		
 		if (mysqli_num_rows($result) > 0) {
-			
-			header("Location: 008.01.pag1-UtenteVerificato.php");
+			echo "Nome utente NON  valido, inserimento interrotto !!<BR>";
+		} else {
+			$sql = "INSERT INTO utenti (utente, password) VALUES ('$inputUtente', '$pwd')";
+			$result = mysqli_query($connection, $sql)
+				or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+			echo "Utente inserito.<BR>";
 		}
-		else echo("<h1>Grande errore</h1>");
-		
 		mysqli_close($connection);
 	}
 ?>

@@ -14,7 +14,7 @@
 			 <?PHP 
 				$connection = mysqli_connect('localhost', 'root', '', '5ait_vacanze')
 					or die ("ERROR: Cannot connect");
-				$sql = "SELECT ID, user FROM utenti";
+				$sql = "SELECT ID_utente, user FROM utenti";
 		
 				$result = mysqli_query($connection, $sql)
 					or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");

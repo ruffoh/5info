@@ -24,7 +24,7 @@
             }
 
             // Recupero biomi per il dropdown
-            $sql = "SELECT idBioma, bioma FROM biomi";
+            $sql = "SELECT ID_bioma, bioma FROM biomi";
             $result = mysqli_query($connection, $sql);
 
             while ($row = mysqli_fetch_assoc($result)) {
