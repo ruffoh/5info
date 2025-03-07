@@ -20,6 +20,24 @@
 		ID Camera selezionata: <strong><?PHP echo $_SESSION['ID_camera'];?></strong><br>
 		Camera selezionata: <strong><?PHP echo $_SESSION['camera'];?></strong><br>
 		<br>
+<?PHP
+	/*
+		Scrivo la prenotazione sul DB.
+		
+		Leggo la prenotazione dal DB.
+	*/
+		$idUtente = $_SESSION['ID_Utente'];
+		$idAlbergo = $_SESSION['ID_albergo'];
+		$idCamera = $_SESSION['ID_camera'];
+	
+		$connection = mysqli_connect('localhost', 'root', '', 'vacanze')
+			or die ("ERROR: Cannot connect");
+		$sql = "INSERT INTO prenotazioni (ID_utente, ID_albergo, ID_camera) VALUES ($idUtente, $idAlbergo, $idCamera)";
+		echo $sql;
+		$result = mysqli_query($connection, $sql)
+			or die ("ERROR: " . mysqli_error($connection) . " (query was $sql)");
+		
+?>
 		Numero prenotazione: xxx<br>
 		Conserva questo numero, ti servità al momento dell'ingresso in albergo per ritirare le chiavi.<br>
 		<br>

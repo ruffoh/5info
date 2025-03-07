@@ -26,7 +26,7 @@ $inputScarpe = ($_POST["Scarpe"]);
 	
 
 $connection = mysqli_connect('localhost', 'root', '', '5ait_bowling');
-$sql = "SELECT FROM utenti where utente = '$inputUtente' AND  pwd = '$inputPass';";
+$sql = "SELECT FROM user where user = '$inputUtente' AND  password = '$inputPass';";
 $result   = mysqli_query($connection,$sql)
 	or die("Errore query");
 if(mysqli_num_rows($result)>= 0){

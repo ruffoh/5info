@@ -27,7 +27,7 @@ $inputPass = ($_POST["password"]);
 $pwd = md5('$inputPass');
 
 $connection = mysqli_connect('localhost', 'root', '', '5ait_bowling');
-$sql = "SELECT ID_Utente FROM utenti where utente = '$inputUtente' AND  pwd = '$inputPass';";
+$sql = "SELECT id FROM user where user = '$inputUtente' AND  password = '$inputPass';";
 $result   = mysqli_query($connection,$sql)
 	or die("Errore query");
 if(mysqli_num_rows($result)>= 0){

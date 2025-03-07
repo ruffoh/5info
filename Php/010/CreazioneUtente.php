@@ -31,7 +31,7 @@ if (!isset($_POST["InvioCredenziali"])) {
         
         $pwd = md5($inputPass);
         
-        $sql = "SELECT ID_Utente from utenti WHERE utente = '$inputUtente'";
+        $sql = "SELECT id from user WHERE user = '$inputUtente'";
        
         $connection = mysqli_connect('localhost', 'root', '', '5ait_bowling')
             or  die ("ERROR: Cannot connect");
@@ -41,7 +41,7 @@ if (!isset($_POST["InvioCredenziali"])) {
         
         
         if(mysqli_num_rows($result)>=0 ){
-            $sql = "INSERT into utenti (utente,pwd) values ('$inputUtente,$pwd);"
+            $sql = "INSERT into user (user,password) values ('$inputUtente,$pwd);"
             or die ("Errore Database");
             echo '<h2> sei dentro </h2> <br> <a href = "AccessoUtente.php" > accedi</a>';
          } else{
