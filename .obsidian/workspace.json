@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SQL.md",
+                "file": "Php.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SQL"
+              "title": "Php"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -158,8 +159,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "25ec6503ca028c03",
+  "active": "2343eb3efdfa1883",
   "lastOpenFiles": [
+    "SQL.md",
     "Teoria.md",
     "Sql/verifica/Verifica 20_12_2024.md",
     "Sql/3.1/Esercitaziobe.sql",
@@ -171,7 +173,6 @@
     "Sql/verifica",
     "Sql/3.1",
     "Sql/1.4",
-    "Sql/1.3",
-    "SQL.md"
+    "Sql/1.3"
   ]
 }
